@@ -64,10 +64,8 @@ get '/edit' do
   erb :edit
 end
 
-post '/edit/:id' do
-  @user = current_user
-  @skills = current_user.skills
-  @proficiencies = current_user.proficiencies
+post '/edit' do
+  @user = find(session[:user_id])
   redirect '/'
 end
 
