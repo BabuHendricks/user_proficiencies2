@@ -1,7 +1,8 @@
 get '/' do
   # render home page
   @users = User.all
-
+  @skills = Skill.all
+  # @proficiencies = Proficiency.all
   erb :index
 end
 
@@ -56,3 +57,14 @@ post '/users' do
     erb :sign_up
   end
 end
+
+get '/edit/:id' do
+  @user = User.find_by_id(params[:id])
+  erb :edit
+end
+
+post '/edit/:id' do
+  # still needs logic
+  redirect '/'
+end
+
