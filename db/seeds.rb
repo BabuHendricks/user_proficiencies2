@@ -21,10 +21,10 @@ end
 # TODO: create associations between users and skills
 User.all.each do |user|
   2.times do
-    prof = Proficiency.new(skill_id: Skill.find(rand(1..Skill.count)).id,
+    prof = Proficiency.create!(skill_id: Skill.find(rand(1..Skill.count)).id,
                        user_id: user.id,
                        years: rand(1..10),
                        formal: [true,false].sample)
-    prof.save
+    # prof.save
   end
 end

@@ -4,19 +4,19 @@
 
   <table>
     <tr>
-      <td><%= @user.name %></td>
-      <td><%= @user.skills.each do |skill| %>
-        <p><%= skill.name %></p>
+      <td><%= current_user.name %></td>
+      <td><%= current_user.proficiencies.each do |proficiency| %>
+        <p><%= proficiency.name %></p>
         <% end %>
       </td>
 
-      <td><% @user.each do |skill| %>
-        <p><%= Proficiency.find_by(skill_id: skill.id, user_id; @user.id).years %></p>
+      <td><% current_user.each do |proficiency| %>
+        <p><%= proficiency.years %></p>
         <% end %>
       </td>
 
-      <td><% @user.skills.each do |skill| %>
-        <p><%= Proficiency.find_by(skill_id: skill.id, user_id: @user.id).formal %></p>
+      <td><% current_user.skills.each do |proficiency| %>
+        <p><%= proficiency.formal %></p>
         <% end %>
       </td>
     </tr>
@@ -28,7 +28,7 @@
 
 <form id="edit" method="post" action="/edit">
   <label class="edit_label" for="name">Name</label>
-  <input type="text" name="name" value="<%= @user.name %>">
+  <input type="text" name="name" value="<%= current_user.name %>">
   <label class="edit_label" for="skills">Skills (select one to add):</label>
   <select id="skills" name="skills">
     <% @skills.each do |skill| %>

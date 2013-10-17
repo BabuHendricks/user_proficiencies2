@@ -10,24 +10,22 @@
   <% if @users %>
     <% @users.each do |user| %>
       <tr>
-        <% if user.id == session[:user_id] %>
-          <td><a href="/edit/<%= @user.id%>"><%= user.name %></a></td>
-        <% else %>
-          <td><%= user.name %></td>
-        <% end %>
+
+        <td><%= user.name %></td>
+
 
         <td><% user.skills.each do |skill| %>
             <p><%= skill.name %></p>
             <% end %>
         </td>
 
-        <td><% user.skills.each do |skill| %>
-          <p><%= Proficiency.find_by(skill_id: skill.id, user_id: user.id).years %></p>
+        <td><% user.proficiencies.each do |proficiency| %>
+          <p><%= proficiency.years %></p>
           <% end %>
         </td>
 
-        <td><% user.skills.each do |skill| %>
-          <p><%= Proficiency.find_by(skill_id: skill.id, user_id: user.id).formal %></p>
+        <td><% user.proficiencies.each do |proficiency| %>
+          <p><%= proficiency.formal %></p>
           <% end %>
         </td>
        </tr>
